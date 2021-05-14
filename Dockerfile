@@ -13,14 +13,12 @@ RUN DEBIAN_FRONTEND=noninteractive \
     vim \
     unzip
 
-RUN mkdir /aspace && \
-    cd /aspace && \
-    wget -q https://github.com/archivesspace/archivesspace/releases/download/v2.8.1/archivesspace-v2.8.1.zip && \
+RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v2.8.1/archivesspace-v2.8.1.zip && \
     unzip archivesspace-v2.8.1.zip && \
     rm archivesspace-v2.8.1.zip
 
-RUN /aspace/archivesspace/scripts/setup-database.sh
+RUN archivesspace/scripts/setup-database.sh
 
-EXPOSE 8080 8081 8089 8090 8092
+EXPOSE 8080 8081
 
-CMD [ "/aspace/archivesspace/archivesspace.sh" ]
+CMD [ "archivesspace/archivesspace.sh" ]
