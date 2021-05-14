@@ -17,6 +17,8 @@ RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v2.
     unzip archivesspace-v2.8.1.zip && \
     rm archivesspace-v2.8.1.zip
 
+COPY ./configuration/config.rb /archivesspace/config/
+
 RUN archivesspace/scripts/setup-database.sh
 
 EXPOSE 8080 8081
