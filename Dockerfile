@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-
+EXPOSE 8080 8081
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update && \
     apt-get -y install --no-install-recommends \
@@ -12,15 +12,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
     openssh-server \
     vim \
     unzip
-
 RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v2.8.1/archivesspace-v2.8.1.zip && \
     unzip archivesspace-v2.8.1.zip && \
     rm archivesspace-v2.8.1.zip
-
 COPY ./configuration/config.rb /archivesspace/config/
-
 RUN archivesspace/scripts/setup-database.sh
-
-EXPOSE 8080 8081
-
 CMD [ "archivesspace/archivesspace.sh" ]
