@@ -16,5 +16,6 @@ RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v2.
     unzip archivesspace-v2.8.1.zip && \
     rm archivesspace-v2.8.1.zip
 COPY ./configuration/config.rb /archivesspace/config/
+COPY ./configuration/en.yml /archivesspace/locales/public/
 RUN archivesspace/scripts/setup-database.sh
 CMD [ "archivesspace/archivesspace.sh" ]
