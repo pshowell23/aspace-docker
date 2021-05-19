@@ -15,6 +15,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
 RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v2.8.1/archivesspace-v2.8.1.zip && \
     unzip archivesspace-v2.8.1.zip && \
     rm archivesspace-v2.8.1.zip
+RUN wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar && \
+    mv mysql-connector-java-5.1.39.jar /archivesspace/lib/
 COPY ./configuration/config.rb /archivesspace/config/
 COPY ./configuration/en.yml /archivesspace/locales/public/
 RUN archivesspace/scripts/setup-database.sh
