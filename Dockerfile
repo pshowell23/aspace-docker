@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 EXPOSE 8080 8081
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update && \

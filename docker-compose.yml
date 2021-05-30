@@ -1,7 +1,15 @@
 version: '3'
 services:
+  aspace_data:
+    image: mysql:8.0.25
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
   aspace:
     build: .
     ports:
       - '8080:8080'
       - '8081:8081'
+    stdin_open: true
+    tty: true
