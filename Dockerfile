@@ -15,9 +15,14 @@ RUN DEBIAN_FRONTEND=noninteractive \
 RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v2.8.1/archivesspace-v2.8.1.zip && \
     unzip archivesspace-v2.8.1.zip && \
     rm archivesspace-v2.8.1.zip
-RUN wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar && \
-    mv mysql-connector-java-5.1.39.jar /archivesspace/lib/
+RUN wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.25/mysql-connector-java-8.0.25.jar && \
+    mv mysql-connector-java-8.0.25.jar /archivesspace/lib/
 COPY ./configuration/config.rb /archivesspace/config/
 COPY ./configuration/en.yml /archivesspace/locales/public/
-RUN archivesspace/scripts/setup-database.sh
-CMD [ "archivesspace/archivesspace.sh" ]
+COPY ./docker-startup.sh /archivesspace/startup.sh
+RUN chmod u+x /archivesspace/startup.sh && \
+    groupadd -g 1000 archivesspace && \
+    useradd -l -M -u 1000 -g archivesspace archivesspace && \
+    chown -R archivesspace:archivesspace /archivesspace
+USER archivesspace
+CMD [ "archivesspace/startup.sh" ]
