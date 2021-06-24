@@ -1,5 +1,12 @@
 # PALNI ArchivesSpace Docker Image
 
+## Installation
+
+- Install MySQL and create database with user permissions per [ArchivesSpace instructions](https://archivesspace.github.io/tech-docs/provisioning/mysql.html)
+- Change DB URL in configuration/config.rb to reflect correct credentials for DB
+- Change mapped ports in docker-compose.yml
+- Run `docker-compose up`
+
 ## Tech Involved
 
 - Ubuntu 18.04
