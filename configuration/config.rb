@@ -56,10 +56,10 @@
 ## value to a filepath that archivesspace has write access to.
 #AppConfig[:frontend_log] = "default"
 ## Log level for the frontend, values: (everything) debug, info, warn, error, fatal (severe only)
-#AppConfig[:frontend_log_level] = "debug"
+AppConfig[:frontend_log_level] = "info"
 ## Log level for the backend, values: (everything) debug, info, warn, error, fatal (severe only)
 #AppConfig[:backend_log] = "default"
-#AppConfig[:backend_log_level] = "debug"
+AppConfig[:backend_log_level] = "info"
 #
 #AppConfig[:pui_log] = "default"
 #AppConfig[:pui_log_level] = "debug"
