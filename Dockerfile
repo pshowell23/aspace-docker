@@ -17,6 +17,12 @@ RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v2.
     rm archivesspace-v2.8.1.zip
 RUN wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.25/mysql-connector-java-8.0.25.jar && \
     mv mysql-connector-java-8.0.25.jar /archivesspace/lib/
+RUN wget https://github.com/archivesspace-plugins/lcnaf/archive/refs/tags/v2.0.0.zip && \
+    unzip v2.0.0.zip && \
+    rm v2.0.0.zip && \
+    mv /lcnaf-2.0.0 /lcnaf && \
+    rm -rf /archivesspace/plugins/lcnaf && \
+    mv /lcnaf /archivesspace/plugins/
 COPY ./configuration/config.rb /archivesspace/config/
 COPY ./configuration/en.yml /archivesspace/locales/public/
 COPY ./docker-startup.sh /archivesspace/startup.sh
