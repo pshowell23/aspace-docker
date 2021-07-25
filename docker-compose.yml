@@ -3,7 +3,6 @@ services:
   aspace:
     container_name: aspace
     build: .
-    #command: --add-host host.docker.internal:host-gateway
     ports:
       - '8080:8080'
       - '8081:8081'
