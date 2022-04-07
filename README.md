@@ -11,7 +11,7 @@
 ## Tech Involved
 
 - Ubuntu 18.04
-- MySQL v8.0.25
+- MySQL v8.0.28
 - Archivesspace v2.8.1
 
 ## Notes
