@@ -2,15 +2,32 @@ version: '3'
 services:
   aspace:
     container_name: aspace
-    build: .
+    build:
+      context: .
     ports:
       - '8080:8080'
       - '8081:8081'
+    depends_on:
+      - solr
     environment:
       APPCONFIG_DB_URL: 'jdbc:mysql://host.docker.internal:3306/archivesspace?useUnicode=true&characterEncoding=UTF-8&user=as&password=as123&useSSL=false&allowPublicKeyRetrieval=true'
+      APPCONFIG_SOLR_URL: 'http://solr:8983/solr/archivesspace'
     volumes:
       - aspace_data:/archivesspace/data
       - aspace_logs:/archivesspace/logs
+
+  solr:
+    container_name: solr
+    build: 
+      context: ./solr
+    restart: always
+    ports:
+      - '8983:8983'
+    volumes:
+      - solr:/opt/solr/server/solr/archivesspace/data
+      - solr_logs:/opt/solr/server/logs
 volumes:
   aspace_data:
   aspace_logs:
+  solr:
+  solr_logs:

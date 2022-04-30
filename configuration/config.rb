@@ -91,7 +91,7 @@ AppConfig[:backend_log_level] = "fatal"
 ## here: https://lucene.apache.org/solr/
 ## Configuring search operator to be AND by default - ANW-427
 #AppConfig[:solr_params] = { 'q.op' => 'AND' }
-#AppConfig[:solr_verify_checksums] = true
+AppConfig[:solr_verify_checksums] = false
 #
 ## Set the application's language (see the .yml files in
 ## https://github.com/archivesspace/archivesspace/tree/master/common/locales for
