@@ -1,13 +1,15 @@
-FROM solr:8.10
-
-WORKDIR /opt/solr/server/solr/archivesspace
-
-RUN mkdir conf && \
-    mkdir data && \
-    wget -q https://github.com/archivesspace/archivesspace/releases/download/v3.2.0/archivesspace-v3.2.0.zip && \
-    unzip archivesspace-v3.2.0.zip && \
-    rm archivesspace-v3.2.0.zip && \
-    mv archivesspace/solr/ conf/ && \
-    rm -rf archivesspace
+FROM solr:8.11.1
 
 USER solr
+
+WORKDIR /opt/solr-8.11.1
+
+COPY lib ./server/solr/configsets/archivesspace/conf
+COPY schema.xml ./server/solr/configsets/archivesspace/conf
+COPY solrconfig.xml ./server/solr/configsets/archivesspace/conf
+COPY stopwords.txt ./server/solr/configsets/archivesspace/conf
+COPY synonyms.txt ./server/solr/configsets/archivesspace/conf
+
+RUN bin/solr start
+
+RUN bin/solr create -c archivesspace -d archivesspace
