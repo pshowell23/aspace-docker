@@ -14,7 +14,6 @@
 #
 ## Set your database name and credentials here.  Example:
 ## AppConfig[:db_url] = "jdbc:mysql://localhost:3306/archivesspace?user=as&password=as123&useUnicode=true&characterEncoding=UTF-8"
-#AppConfig[:db_url] = "jdbc:mysql://aspace_data:3306/archivesspace?user=as&password=as123&useUnicode=true&characterEncoding=UTF-8"
 ##
 #AppConfig[:db_url] = proc { AppConfig.demo_db_url }
 #
@@ -40,7 +39,7 @@
 #
 ## The ArchivesSpace Solr index listens on port 8090 by default.  You can
 ## set it to something else below.
-#AppConfig[:solr_url] = "http://localhost:8090"
+#AppConfig[:solr_url] = "http://localhost:8983/solr/archivesspace"
 #
 ## The ArchivesSpace indexer listens on port 8091 by default.  You can
 ## set it to something else below.
@@ -91,7 +90,8 @@ AppConfig[:backend_log_level] = "fatal"
 ## For more information about solr parameters, please consult the solr documentation
 ## here: https://lucene.apache.org/solr/
 ## Configuring search operator to be AND by default - ANW-427
-#AppConfig[:solr_params] = { 'mm' => '100%' }
+#AppConfig[:solr_params] = { 'q.op' => 'AND' }
+AppConfig[:solr_verify_checksums] = false
 #
 ## Set the application's language (see the .yml files in
 ## https://github.com/archivesspace/archivesspace/tree/master/common/locales for
@@ -99,7 +99,7 @@ AppConfig[:backend_log_level] = "fatal"
 #AppConfig[:locale] = :en
 #
 ## Plug-ins to load. They will load in the order specified
-#AppConfig[:plugins] = ['local',  'lcnaf']
+#AppConfig[:plugins] = ['local', 'lcnaf']
 #
 ## The number of concurrent threads available to run background jobs
 ## Resist the urge to set this to a big number as it will affect performance
@@ -212,8 +212,8 @@ AppConfig[:backend_log_level] = "fatal"
 ## If you are serving user-facing applications via proxy
 ## (i.e., another domain or port, or via https, or for a prefix) it is
 ## recommended that you record those URLs in your configuration
-#AppConfig[:frontend_proxy_url] = 'http://localhost/test/staff'
-#AppConfig[:public_proxy_url] = 'http://localhost/test'
+#AppConfig[:frontend_proxy_url] = proc { AppConfig[:frontend_url] }
+#AppConfig[:public_proxy_url] = proc { AppConfig[:public_url] }
 #
 ## Don't override _prefix or _proxy_prefix unless you know what you're doing
 #AppConfig[:frontend_proxy_prefix] = proc { "#{URI(AppConfig[:frontend_proxy_url]).path}/".gsub(%r{/+$}, "/") }
@@ -227,7 +227,6 @@ AppConfig[:backend_log_level] = "fatal"
 #AppConfig[:enable_backend] = true
 #AppConfig[:enable_frontend] = true
 #AppConfig[:enable_public] = true
-#AppConfig[:enable_solr] = true
 #AppConfig[:enable_indexer] = true
 #AppConfig[:enable_docs] = true
 #AppConfig[:enable_oai] = true
@@ -287,6 +286,10 @@ AppConfig[:backend_log_level] = "fatal"
 #AppConfig[:report_pdf_font_paths] = proc { ["#{AppConfig[:backend_url]}/reports/static/fonts/dejavu/DejaVuSans.ttf"] }
 #AppConfig[:report_pdf_font_family] = "\"DejaVu Sans\", sans-serif"
 #
+## option to enable custom reports
+## USE WITH CAUTION - running custom reports that are too complex may cause ASpace to crash
+#AppConfig[:enable_custom_reports] = false
+#
 ## Path to system Java -- required when creating PDFs on Windows
 #AppConfig[:path_to_java] = "java"
 #
@@ -339,7 +342,9 @@ AppConfig[:backend_log_level] = "fatal"
 ## Expose external ids in the frontend
 #AppConfig[:show_external_ids] = false
 #
-##
+## Whether to display archival record identifiers in the frontend largetree container
+#Setting temporarily disabled
+#
 ## This sets the allowed size of the request/response header that Jetty will accept (
 ## anything bigger gets a 403 error ). Note if you want to jack this size up,
 ## you will also have to configure your Nginx/Apache  as well if
@@ -483,7 +488,7 @@ AppConfig[:backend_log_level] = "fatal"
 #
 #AppConfig[:pui_search_results_page_size] = 10
 #AppConfig[:pui_branding_img] = 'archivesspace.small.png'
-#AppConfig[:pui_branding_img_alt_text] = 'ArchivesSpace logo'
+#AppConfig[:pui_branding_img_alt_text] = 'ArchivesSpace - a community served by Lyrasis.'
 #AppConfig[:pui_block_referrer] = true # patron privacy; blocks full 'referrer' when going outside the domain
 #
 ## The number of PDFs that can be generated (in the background) at the same time.
@@ -505,7 +510,7 @@ AppConfig[:backend_log_level] = "fatal"
 #AppConfig[:pui_hide][:classifications] = false
 #AppConfig[:pui_hide][:search_tab] = false
 ## The following determine globally whether the various "badges" appear on the Repository page
-## can be overriden at repository level below (e.g.:  AppConfig[:pui_repos][{repo_code}][:hide][:counts] = true
+## can be overridden at repository level below (e.g.:  AppConfig[:pui_repos][{repo_code}][:hide][:counts] = true
 #AppConfig[:pui_hide][:resource_badge] = false
 #AppConfig[:pui_hide][:record_badge] = true # hide by default
 #AppConfig[:pui_hide][:digital_object_badge] = false
@@ -517,8 +522,11 @@ AppConfig[:backend_log_level] = "fatal"
 ## The following determines globally whether the 'container inventory' navigation tab/pill is hidden on resource/collection page
 #AppConfig[:pui_hide][:container_inventory] = false
 #
-## Whether to display linked decaccessions
+## Whether to display linked deaccessions
 #AppConfig[:pui_display_deaccessions] = true
+#
+## Whether to display archival record identifiers in the PUI collection organization tree
+##Setting temporarily disabled
 #
 ##The number of characters to truncate before showing the 'Read More' link on notes
 #AppConfig[:pui_readmore_max_characters] = 450
@@ -527,11 +535,6 @@ AppConfig[:backend_log_level] = "fatal"
 #AppConfig[:pui_page_actions_cite] = true
 #AppConfig[:pui_page_actions_request] = true
 #AppConfig[:pui_page_actions_print] = true
-#
-## Set default/active tab for PUI citation modal. If set to 'true' item citation
-## tab will be active by default; if 'false' item description tab will be active.
-## AppConfig[:pui_page_actions_cite] must be set to true for this to take effect.
-#AppConfig[:pui_active_citation_tab_item] = true
 #
 ## Enable / disable search-in-collection form in sidebar when viewing records
 #AppConfig[:pui_search_collection_from_archival_objects] = false
@@ -671,6 +674,28 @@ AppConfig[:backend_log_level] = "fatal"
 ## In most cases this will be the same as the PUI URL.
 #AppConfig[:ark_url_prefix] = proc { AppConfig[:public_proxy_url] }
 #
+## The implementation of ArkMinter used to generate new ARKs.  See
+## `ark_minter.rb` for documentation on how to implement your own ARK minter.
+##
+## Out of the box, you can choose between:
+##
+##  :archivesspace_ark_minter -- ArchivesSpace ARK minter based on a numeric sequence.
+##
+##  :smithsonian_ark_minter -- An ARK minter, used by the Smithsonian
+##    Institution, based on random UUIDs.
+#AppConfig[:ark_minter] = :archivesspace_ark_minter
+#
+## Enables a field on each Repository record that is inserted after the NAAN in
+## each ARK generated.
+#AppConfig[:ark_enable_repository_shoulder] = false
+#
+## If set, this string is included to separate the ARK shoulder from the unique generated value.
+#AppConfig[:ark_shoulder_delimiter] = ''
+#
+## If true, adds a field to each Resource/Archival Object record that allows the
+## ARK URL to be manually set.
+#AppConfig[:arks_allow_external_arks] = true
+#
 ## Specifies if the fields that show up in csv should be limited to those in search results
 #AppConfig[:limit_csv_fields] = true
 #
@@ -680,3 +705,10 @@ AppConfig[:backend_log_level] = "fatal"
 ## For Bulk Import:
 ## specifies whether the "Load Digital Objects" button is available at the Resource Level
 #AppConfig[:hide_do_load] = false
+#
+## For Agents Export
+#AppConfig[:export_eac_agency_code] = false
+#
+## Disable logged warnings when changing config settings that have already been set
+## This might be useful when running tests that need to fiddle with config
+#AppConfig[:disable_config_changed_warning] = false

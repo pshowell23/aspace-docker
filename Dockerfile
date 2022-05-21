@@ -12,17 +12,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
     openssh-server \
     nano \
     unzip
-RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v2.8.1/archivesspace-v2.8.1.zip && \
-    unzip archivesspace-v2.8.1.zip && \
-    rm archivesspace-v2.8.1.zip
-RUN wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.26/mysql-connector-java-8.0.26.jar && \
-    mv mysql-connector-java-8.0.26.jar /archivesspace/lib/
-RUN wget https://github.com/archivesspace-plugins/lcnaf/archive/refs/tags/v1.0.0.zip && \
-    unzip v1.0.0.zip && \
-    rm v1.0.0.zip && \
-    mv /lcnaf-1.0.0 /lcnaf && \
-    rm -rf /archivesspace/plugins/lcnaf && \
-    mv /lcnaf /archivesspace/plugins/
+RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v3.2.0/archivesspace-v3.2.0.zip && \
+    unzip archivesspace-v3.2.0.zip && \
+    rm archivesspace-v3.2.0.zip
+RUN wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar && \
+    mv mysql-connector-java-8.0.28.jar /archivesspace/lib/
 COPY ./configuration/config.rb /archivesspace/config/
 COPY ./configuration/en.yml /archivesspace/locales/public/
 COPY ./docker-startup.sh /archivesspace/startup.sh
