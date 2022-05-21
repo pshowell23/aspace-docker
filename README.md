@@ -3,11 +3,12 @@
 ## Installation
 
 - Install MySQL and create database with user permissions per [ArchivesSpace instructions](https://archivesspace.github.io/tech-docs/provisioning/mysql.html)
-    - Ensure global variable log_bin_trust_function_creators=1 
+    - Ensure global variable log_bin_trust_function_creators=1 by running `$ SET GLOBAL log_bin_trust_function_creators = 1;`
 - Change DB URL in [docker-compose.yml](/docker-compose.yml) to reflect correct credentials for DB
 - Change Frontend and Backend proxy urls to reflect "http://archivesspace.palni.org/<institution>"
 - Change mapped ports in [docker-compose.yml](/docker-compose.yml)
 - Run `$ docker-compose up`
+- Run `$ docker exec solr bin/solr create -c archivesspace -d archivesspace`
 
 ## Tech Involved
 
