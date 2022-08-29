@@ -12,13 +12,14 @@ services:
     environment:
       APPCONFIG_DB_URL: 'jdbc:mysql://host.docker.internal:3306/archivesspace?useUnicode=true&characterEncoding=UTF-8&user=as&password=as123&useSSL=false&allowPublicKeyRetrieval=true'
       APPCONFIG_SOLR_URL: 'http://solr:8983/solr/archivesspace'
+    restart: always
     volumes:
       - aspace_data:/archivesspace/data
       - aspace_logs:/archivesspace/logs
 
   solr:
     container_name: solr
-    build: 
+    build:
       context: ./solr
     restart: always
     ports:
