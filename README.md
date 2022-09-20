@@ -9,7 +9,7 @@
 - Change mapped ports in [docker-compose.yml](/docker-compose.yml)
 - Run `$ docker-compose up`
 - Run `$ docker exec solr bash`
-    - Run `bin/solr create -c archivesspace -d archivesspace` from within the `opt/solr` directory
+    - Run `bin/solr create -c archivesspace -d archivesspace` from within the `/opt/solr` directory
 
 ## Tech Involved
 
