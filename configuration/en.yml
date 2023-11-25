@@ -23,42 +23,39 @@ en:
   brand:
     title: ArchivesSpace Public Interface
     title_link_text: Return to the ArchivesSpace homepage
-    home: Home
     welcome_head: Welcome to ArchivesSpace
     welcome_message: |
       <p>Search across our collections, digital materials, and more.</p>
-
-    welcome_search_label: "Find what you're looking for:"
     welcome_page_title: ArchivesSpace Public Interface
 
   actions:
     search: Search
     search_header: Search The Archives
     search_within: Search within results
-    search_in: 'Search %{type}'
+    search_in: "Search %{type}"
     new_search: New Search
     refine_search: Refine Search
-    browse: Browse
     close: Close
-    show_advanced_search: Show Advanced Search
-    hide_advanced_search: Hide Advanced Search
     backup: Return to the previous page
     backup_abbr: Go back
     cite: Citation
     cite_item: Cite Item
     cite_item_description: Cite Item Description
+    digitized: View Digital Material
     request: Request
     print: Print
     print-generating: Generating
     collection_overview: Collection Overview
     hierarch: Collection Organization
     numeric: Container Inventory
-    detailed: Detailed Contents
-    record_details: Record Details
     clipboard: Copy to clipboard
+    cilpboard_cite_item: Copy item citation to clipboard
+    cilpboard_cite_item_description: Copy item description citation to clipboard
     search_add_row: Add a search row
     search_remove_row: Remove the row below
     staff_link: Staff Only
+    next: Next
+    previous: Previous
 
   page_actions: Page Actions
 
@@ -69,19 +66,20 @@ en:
     user_email: Your email address
     date: Anticipated arrival date
     note: Note to the staff
-    visit: 'Submit a request to visit %{repo_name} to view <strong>%{archival_object}</strong>'
+    visit: "Submit a request to visit %{repo_name} to view <strong>%{archival_object}</strong>"
     submit: Submit Request
-    submitted: Thank you, your request has been submitted.  You will soon receive an email with a copy of your request.
+    submitted: Thank you, your request has been submitted.  You will soon receive an email with a
+      copy of your request.
     errors:
       name: Please enter your name
       email: Please enter a valid email address
     email:
-      subject: 'Request for %{title}'
+      subject: "Request for %{title}"
 
   search-button:
     label: Search
-  search-limit: 'Limit to %{limit}'
-  search-limiting: 'limited to %{limit}'
+  search-limit: "Limit to %{limit}"
+  search-limiting: "limited to %{limit}"
   search-limits:
     all: all record types
     repository: repositories
@@ -95,54 +93,31 @@ en:
     agent: content creator
     agents: content creators
   search-field: Search field
-  searched-field: 'searching %{field}'
-
-  pagination:
-    first: First
-    last: Last
-    previous: '&#171;'
-    next: '&#187;'
-    summary_prefix: Showing
-    summary_offset_connector: '-'
-    summary_total_connector: of
-    summary_suffix: Results
-    page_prefix: Page
-    page_connector: of
+  searched-field: "searching %{field}"
 
   search_results:
-    page_title: 'Found %{count} Results'
-    results_head: 'Showing %{type}: %{start} - %{end} of %{total}'
+    page_title: "Found %{count} Results"
+    results_head: "Showing %{type}: %{start} - %{end} of %{total}"
     result: Result
     results: Results
-    head_prefix: Found
-    head_suffix: Results
-    searching: Searching
-    search_for: 'Search  %{type} where %{conditions}'
+    search_for: "Search %{type} where %{conditions}"
     keyword_contain: "<strong>keyword(s)</strong>: <span class='searchterm'>%{kw}</span>"
     title_contain: "the <strong>title</strong> contains  <span class='searchterm'>%{kw}</span>"
     notes_contain: "the <strong>note</strong> contains  <span class='searchterm'>%{kw}</span>"
-    creators_text_contain: "the <strong>creator</strong> contains <span class='searchterm'>%{kw}</span>"
-    subjects_text_contain: "the <strong>subject</strong> contains <span class='searchterm'>%{kw}</span>"
-    identifier_contain: "the <strong>identifier</strong> contains <span class='searchterm'>%{kw}</span>"
-    four_part_id_contain: "the <strong>identifier</strong> contains <span class='searchterm'>%{kw}</span>"
-    in_repository: ' in <strong>%{name}</strong>'
-    year_range: ' from <strong>%{from_year}</strong> to <strong>%{to_year}</strong>'
-    anything: '*'
+    creators_text_contain: "the <strong>creator</strong> contains\
+      \ <span class='searchterm'>%{kw}</span>"
+    subjects_text_contain: "the <strong>subject</strong> contains\
+      \ <span class='searchterm'>%{kw}</span>"
+    identifier_contain: "the <strong>identifier</strong> contains\
+      \ <span class='searchterm'>%{kw}</span>"
+    in_repository: " in <strong>%{name}</strong>"
+    anything: "*"
     search_term: Search term
-    title: All Records
     error: Your search could not be completed due to an unexpected error
     no_results: No Records Found
-    no_results_prefix: There were no search results for
-    result_type: Record Type
-    result_title: Title
     filter_by: Filter By
     filtered_by: Filtered By
     remove_filter: Remove this filter
-    modified: Last Modified
-    created: Created
-    text_placeholder: Filter by text
-    clear_all: Clear All
-    component_switch: Include Components
     more_facets: more
     fewer_facets: less
     op:
@@ -183,41 +158,30 @@ en:
       years_include: Years to include
       year_now: now
       year_begin: the beginning
-      from_to: 'Years: %{begin} to %{end}'
+      from_to: "Years: %{begin} to %{end}"
       child_container_u_sstr: Child container
       grand_child_container_u_sstr: Grandchild container
       type_enum_s: Type
       published_series_title_u_sstr: Series
       instance_type_enum_s: Instance type
       langcode: Language
+      digital_object_type_enum_s: Type
+      extent_type_enum_s: Extent
 
   search_sorting:
-    sort_by: 'Sort by:'
+    sort_by: "Sort by:"
     sort: Sort
-    and: 'and:'
     asc: (ascending)
     desc: (descending)
     relevance: Relevance
     title_sort: Title
-    user_mtime: Modified
-    primary_type: Record Type
-    processing_priority: Priority
-    processing_status: Status
-    parent_id: Record Type
-    create_time: Created
-    authority_id: Authority ID
-    source: Source
-    rules: Rules
-    outcome: Outcome
-    event_type: Type
     identifier: Identifier
-    select: Select
     year_sort: Year
-    sorting: '%{type} %{direction}'
+    sorting: "%{type} %{direction}"
     classification_identifier: Identifier
 
   inherit:
-    inherited: 'From the %{level}:'
+    inherited: "From the %{level}:"
     collection: Collection
     series: Series
     sub-series: Sub-Series
@@ -231,27 +195,31 @@ en:
     subgrp: Sub-Group
 
   errors:
-    error_404: '%{type} Record Not Found'
-    error_404_message: "The %{type} record you've tried to access does not exist or may have been removed."
+    error_404: "%{type} Record Not Found"
+    error_404_message: "The %{type} record you've tried to access does not exist or may have been\
+      \ removed."
     backend_down: Unable to Connect to Database
-    backend_down_message: ArchivesSpace is currently experiencing technical difficulties. We apologise for the inconvenience. Please try again later.
+    backend_down_message: ArchivesSpace is currently experiencing technical difficulties. We
+      apologise for the inconvenience. Please try again later.
     unexpected_error: Your request could not be completed due to an unexpected error
+    invalid_search_params: "Invalid search parameter '%{value}' for field '%{field}'"
 
   boolean:
-    'true': 'Yes'
-    'false': 'No'
+    "true": "Yes"
+    "false": "No"
 
   navbar:
     search_placeholder: Enter your search terms
-    search_all: All Records
     error_no_term: No search term(s) entered.
-    search_terms_results: 'Your search for {{search_terms}} yielded {{number}} results'
     toggle_navigation: Toggle Navigation
+
+  navigation:
+    hierarchical: hierarchical navigation
+    top_level: top-level navigation
 
   internal_links:
     main: Main Content
     filter: Filter Results
-    collection: Collection Organization
     search_collection: Search within collection
 
   accordion:
@@ -259,39 +227,29 @@ en:
     collapse: Collapse All
 
   advanced_search:
-    operator_label: Search operator
+    operator_label: Operator
     operator:
       AND: And
       OR: Or
       NOT: Not
-    button_text: Search
-    reset: Clear
-    nav_switcher:
-      show: Show Advanced
-      hide: Hide Advanced
-    index_switcher:
-      show: Show Advanced Search
-      hide: Hide Advanced Search
+    limit_label: Limit by record type
+    add_row: Add row
+    remove_row: Remove row
 
-  contains: 'Contains %{count} %{type}'
-  found: 'Found in %{count} %{type}'
+  contains: "Contains %{count} %{type}"
+  found: "Found in %{count} %{type}"
   coll_obj:
     _singular: Collection or Record
     _plural: Collections and/or Records
 
-  # I don't have a place for these, so I'm putting them here
   scope_note: Scope Note
   multiple_containers: Multiple Containers
-  # adding the inherited title to the display string
-  inherited: '%{title}, %{display}'
-  extent_number_type: '%{number} %{type}'
-  extent_phys_details: ' : %{deets}'
-  extent_dims: ' ; %{dimensions}'
-
+  extent_number_type: "%{number} %{type}"
+  extent_phys_details: " : %{deets}"
+  extent_dims: " ; %{dimensions}"
   external_docs: External Documents
   more_about: More about
-  listing: Listing
-  list: '%{type} List'
+  list: "%{type} List"
   cont_arr: Collection organization
   dig_cont_arr: Digital object organization
   subgroups: Subgroups
@@ -302,14 +260,25 @@ en:
   linked_instances: Linked Records
   linked_digital_objects: Digital Material
 
+  context: Found in
+  context_delimiter: "/"
+  bulk:
+    _singular: "Majority of material found in %{dates}"
+    _plural: "Majority of material found within %{dates}"
+
+  archive:
+    _singular: The Archive
+    _plural: The Archives
+
   accession:
-    _singular: Unprocessed
+    _singular: Unprocessed Material
     _plural: Unprocessed Materials
     _public:
       section:
-        summary: Summary
         acquisition_type: Acquisition Type
         provenance: Provenance
+        language: Language of Description
+        script: Script of Description
         access_restrictions: Access Restrictions
         access_restrictions_apply: Access Restrictions Apply
         use_restrictions: Use Restrictions
@@ -319,30 +288,14 @@ en:
       related_accessions:
         accessions: Related Unprocessed Material
         deaccessions: Deaccessioned Material
+        forms_part_of: Part Relationship
+        has_part: Part Relationship
+        sibling_of: Sibling Relationship
 
   archival_object:
-    _singular: Archival Record
-    _plural: Archival Records
     _public:
-      section:
-        components: Components
-        summary: Summary
-      messages:
-        no_components: Archival Record has no components
       header:
-        dates: Dates
-        lang: Language
-        script: Script
-        physdesc: Physical Description
-        storage: Container Information
-        access: Conditions Governing Access
-        use: Conditions Governing Use
-        component: Component
         ref_id: Reference Identifier
-
-  archive:
-    _singular: The Archive
-    _plural: The Archives
 
   repository:
     _singular: Repository
@@ -351,32 +304,25 @@ en:
     details: Repository Details
     part: Part of the
 
-  context: Found in
-  context_delimiter: '/'
-  bulk:
-    _singular: 'Majority of material found in %{dates}'
-    _plural: 'Majority of material found within %{dates}'
-
   resource:
     _singular: Collection
     _plural: Collections
+    identifier_separator: ":"
     _public:
       identifier: Identifier
+      identifier_pdf: ID
+      identifier_ark: "ID [ark]"
+      ark_link_name: "Archival Resource Key"
       extent: Extent
       dates: Dates
       lang: Language of Materials
+      lang_pdf: Language of the Material
       script: Script
       digital_object: Digital Object
       physdesc: Physical Description
       storage: Container Information
-      access: Conditions Governing Access
-      use: Conditions Governing Use
       additional: Additional Description
-      section:
-        components: Components
-        summary: Summary
-      messages:
-        no_components: Resource has no components
+      uri: "ID [aspace_uri]"
       finding_aid:
         head: Finding Aid & Administrative Information
         title: Title
@@ -401,48 +347,29 @@ en:
   top_container:
     _singular: Container
     _plural: Containers
+    restricted: Restricted
 
-  related_resource:
-    _singular: Related Collection
-    _plural: Related Collections
-
-  digital_object: &digital_object_attributes
+  digital_object:
     _singular: Digital Record
     _plural: Digital Materials
     _public:
       thumbnail: thumbnail
       link: Link to digital object
       badge_label: Digital %{level}
-      section:
-        components: Components
-        summary: Summary
-      messages:
-        no_components: Digital Object has no components
-
-  digital_object_component:
-    _public:
-      section:
-        components: Components
-        summary: Summary
-      messages:
-        no_components: Digital Object Component has no components
-
+      go: Go to file
+      additional: Additional File Versions
+      url_encoded_data: URL-encoded data
+      browse_number_digital_objects_in_collection: Browse %{num} digital objects in collection
+      
   subject:
     _singular: Subject
     _plural: Subjects
-    used_within: Used within
-
-  component:
-    _singular: Component
-    _plural: Components
-
-  unprocessed: Unprocessed Material
 
   classification:
     _singular: Record Group
     _plural: Record Groups
     creator: Creator
-    identifier_separator: '.'
+    identifier_separator: "."
     _public:
       actions:
         show_subgroups: Show Subgroups
@@ -450,17 +377,17 @@ en:
   classification_term:
     _singular: Record Group Term
     _plural: Record Group Terms
-    identifier_separator: '/'
-
-  all_agents: Names
+    identifier_separator: "/"
 
   an_agent: Name
 
   pui_agent:
     _singular: Name
     _plural: Names
+    parallel: Parallel Names
     related: Related Names
-    creator: Creator
+    also_known_as: Also known by the following names
+
   record:
     _singular: Record
     _plural: Records
@@ -474,52 +401,57 @@ en:
     _plural: Names
     _public:
       section:
-        summary: Summary
-        other_names: Names Forms
-        other_names_preamble: 'Also known by the following names:'
+        other_names: Name Forms
         related_agents: Related Names
-        dates_of_existence: Dates
+        dates: Dates
         related_agent_description: Description
         related_agent_dates: Dates
 
   agent_person:
     _singular: Person
+    _plural: People
 
   agent_family:
     _singular: Family
+    _plural: Families
 
   agent_corporate_entity:
     _singular: Organization
+    _plural: Organizations
 
   agent_software:
     _singular: Software
+    _plural: Software
 
-  components:
-    expand: Expand
-    collapse: Collapse
+  agent_function:
+    _singular: Function
+    _plural: Functions
 
-  instance:
-    _public:
-      link_to_digital_object: Link to Record
+  agent_gender:
+    _singular: Gender
+    _plural: Gender
 
-  record_tree:
-    record_tree_tab: Record Tree
-    search_tab: Search Components
+  agent_place:
+    _singular: Place
+    _plural: Places
 
-  location: Location
+  agent_resource:
+    _singular: Related External Resource
+    _plural: Related External Resources
+
+  agent_occupation:
+    _singular: Occupation
+    _plural: Occupations
+
+  agent_topic:
+    _singular: Topic
+    _plural: Topics
 
   description: About
-
   contact: Contact
-
-  hours: Hours
-
-  number_of: 'Number of %{type}:'
-
+  number_of: "Number of %{type}:"
   parent_inst: Parent Institution
-
   email: Send email
-
   fax: Fax
 
   pdf_reports:
@@ -533,11 +465,10 @@ en:
     finding_aid_written_in: Finding aid written in
     your_finding_aid_pdf: Your finding aid PDF for "%{title}"
     your_finding_aid_is_attached: The finding aid you requested is attached.
-    submit: Send me a PDF
-    description: To receive a PDF version of this collection, please enter your email address below.
-    coming_soon: Your PDF is being generated and will be emailed to you when ready.
-    required: Required
-    user_email: Your email address
+    accessrestrict: Conditions Governing Access
+    userestrict: Conditions Governing Use
+    accruals: Accruals
+    acqinfo: Immediate Source of Acquisition
 
   readmore:
     see_more: See more
@@ -545,8 +476,92 @@ en:
 
   skipnav:
     main_content: Skip to main content
-    sidebar: Skip to sidebar
     search: Skip to search
     search_results: Skip to search results
 
   search_tab: Search %{target}
+
+  agent_record_identifier:
+    identifier_type: Identifier Type
+    source: Source
+    primary_identifier: Is Primary Identifier?
+    record_identifier: Record Identifier
+    snac: Social Networks and Archival Context (SNAC) Identifier
+
+  agent_identifier:
+    identifier_type: Identifier Type
+    entity_identifier: Entity ID
+
+  date_label:
+    existence: Existence
+    usage: Usage
+
+  use_date:
+    _plural: Use Dates
+    _singular: Use Date
+
+  used_language:
+    _plural: Languages Used
+    _singular: Language Used
+
+  structured_date_label:
+    date: Date
+
+  agent_contact:
+    name: Contact Name
+    salutation: Salutation
+    address_1: Address 1
+    address_2: Address 2
+    address_3: Address 3
+    city: City
+    region: State/Region
+    country: Country
+    post_code: Post Code
+    fax: Fax
+    email: E-mail
+
+  telephone:
+    _plural: Telephone Numbers
+    number_type: Number Type
+    number: Number
+    ext: Telephone Extension
+
+  agent_notes:
+    _singular: Note
+    _plural: Notes
+    persistent_id: Persistent ID
+    type: Note Type
+    content: Content
+    note_citation: Citation
+    note_bioghist: Biography
+    note_general_context: General Context
+    note_legal_status: Legal Status
+    note_mandate: Mandate
+    note_structure_or_genealogy: Structure or Genealogy
+    note_text: Note
+
+  metadata_rights_declaration:
+    _plural: Metadata Rights Declarations
+    _singular: Metadata Rights Declaration
+    license: License
+    descriptive_note: Descriptive Note
+    file_uri: File URI
+    xlink_title_attribute: Xlink Title Attribute
+    xlink_role_attribute: Xlink Role Attribute
+    xlink_arcrole_attribute: Xlink Arcrole Attribute
+    file_version_xlink_actuate_attribute: Xlink Actuate Attribute
+    file_version_xlink_show_attribute: Xlink Show Attribute
+    last_verified_date: Last Verified Date
+
+  footer:
+    staff_interface: <a href="%{staff_url}">Staff Interface</a>
+    archivesspace_home: Visit <a href='http://archivesspace.org'>ArchivesSpace.org</a>
+    feedback: <a id='aspaceFeedbackLink' href='%{feedback_url}' target='_blank'>Send Feedback or Report a Problem</a>
+
+  languages:
+    select: Select Language
+    en: English
+    es: Spanish
+    fr: French
+    de: German
+    ja: Japanese
