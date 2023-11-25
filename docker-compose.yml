@@ -5,15 +5,15 @@ services:
     build:
       context: .
     ports:
-      - '8080:8080'
-      - '8081:8081'
+      - '8070:8080'
+      - '8071:8081'
     depends_on:
       - solr
     environment:
-      APPCONFIG_DB_URL: 'jdbc:mysql://host.docker.internal:3306/archivesspace?useUnicode=true&characterEncoding=UTF-8&user=as&password=as123&useSSL=false&allowPublicKeyRetrieval=true'
+      APPCONFIG_DB_URL: 'jdbc:mysql://host.docker.internal:3306/archivesspace_3_2_0?useUnicode=true&characterEncoding=UTF-8&user=as_3_2_0&password=as123&useSSL=false&allowPublicKeyRetrieval=true'
       APPCONFIG_SOLR_URL: 'http://solr:8983/solr/archivesspace'
-      APPCONFIG_FRONTEND_URL: 'http://localhost:8080'
-      APPCONFIG_PUBLIC_URL: 'http://localhost:8081'
+      APPCONFIG_FRONTEND_PROXY_URL: 'http://localhost:8070'
+      APPCONFIG_PUBLIC_PROXY_URL: 'http://localhost:8071'
     restart: always
     volumes:
       - aspace_data:/archivesspace/data

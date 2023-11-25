@@ -17,7 +17,6 @@ RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v3.
     rm archivesspace-v3.2.0.zip
 RUN wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar && \
     mv mysql-connector-java-8.0.28.jar /archivesspace/lib/
-COPY ./configuration/config.rb /archivesspace/config/
 COPY ./configuration/en.yml /archivesspace/locales/public/
 COPY ./docker-startup.sh /archivesspace/startup.sh
 RUN chmod u+x /archivesspace/startup.sh && \
