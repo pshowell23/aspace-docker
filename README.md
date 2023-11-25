@@ -19,5 +19,5 @@
 
 ## Notes
 
-On [Docker Hub](https://hub.docker.com/r/pshowell23/aspace-docker)
+On [Docker Hub](https://hub.docker.com/r/pshowell23/aspace-docker).
 Used [this repo](https://gitlab.msu.edu/msu-libraries/public/archivesspace-docker/-/tree/master) for inspiration.
