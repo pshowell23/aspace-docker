@@ -15,7 +15,7 @@
 
 - Ubuntu 18.04
 - MySQL v8.0.28
-- Archivesspace v3.2.0
+- Archivesspace v3.4.1
 
 ## Notes
 
