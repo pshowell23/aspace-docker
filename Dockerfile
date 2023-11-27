@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-EXPOSE 8080 8081
+EXPOSE 8080 8081 8089
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update && \
     apt-get -y install --no-install-recommends \
@@ -12,9 +12,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
     openssh-server \
     nano \
     unzip
-RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v3.2.0/archivesspace-v3.2.0.zip && \
-    unzip archivesspace-v3.2.0.zip && \
-    rm archivesspace-v3.2.0.zip
+RUN wget -q https://github.com/archivesspace/archivesspace/releases/download/v3.4.1/archivesspace-v3.4.1.zip && \
+    unzip archivesspace-v3.4.1.zip && \
+    rm archivesspace-v3.4.1.zip
 RUN wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar && \
     mv mysql-connector-java-8.0.28.jar /archivesspace/lib/
 COPY ./configuration/en.yml /archivesspace/locales/public/
