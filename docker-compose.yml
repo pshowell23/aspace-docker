@@ -11,7 +11,7 @@ services:
       - solr
     environment:
       APPCONFIG_DB_URL: 'jdbc:mysql://host.docker.internal:3306/archivesspace_3_2_0?useUnicode=true&characterEncoding=UTF-8&user=as_3_2_0&password=as123&useSSL=false&allowPublicKeyRetrieval=true'
-      APPCONFIG_SOLR_URL: 'http://solr:8983/solr/#/archivesspace'
+      APPCONFIG_SOLR_URL: 'http://{{appURL}}:8983/solr/#/archivesspace'
       APPCONFIG_SOLR_VERIFY_CHECKSUMS: 'false'
       APPCONFIG_FRONTEND_PROXY_URL: 'http://localhost:8070'
       APPCONFIG_PUBLIC_PROXY_URL: 'http://localhost:8071'
@@ -20,18 +20,6 @@ services:
       - aspace_data:/archivesspace/data
       - aspace_logs:/archivesspace/logs
 
-  solr:
-    container_name: solr
-    build:
-      context: ./solr
-    restart: always
-    ports:
-      - '8983:8983'
-    volumes:
-      - solr:/opt/solr/server/solr/archivesspace/data
-      - solr_logs:/opt/solr/server/logs
 volumes:
   aspace_data:
   aspace_logs:
-  solr:
-  solr_logs:

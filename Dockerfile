@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
-EXPOSE 8080 8081 8089
+FROM ubuntu:22.04
+EXPOSE 8080 8081
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update && \
     apt-get -y install --no-install-recommends \
