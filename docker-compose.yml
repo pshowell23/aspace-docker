@@ -7,8 +7,6 @@ services:
     ports:
       - '8080:8080'
       - '8081:8081'
-    depends_on:
-      - solr
     environment:
       APPCONFIG_DB_URL: 'jdbc:mysql://host.docker.internal:3306/archivesspace_3_2_0?useUnicode=true&characterEncoding=UTF-8&user=as_3_2_0&password=as123&useSSL=false&allowPublicKeyRetrieval=true'
       APPCONFIG_SOLR_URL: 'http://{{appURL}}:8983/solr/#/archivesspace'
