@@ -8,8 +8,9 @@ services:
       - '8080:8080'
       - '8081:8081'
     environment:
-      APPCONFIG_DB_URL: 'jdbc:mysql://host.docker.internal:3306/archivesspace_3_2_0?useUnicode=true&characterEncoding=UTF-8&user=as_3_2_0&password=as123&useSSL=false&allowPublicKeyRetrieval=true'
-      APPCONFIG_SOLR_URL: 'http://{{appURL}}:8983/solr/#/archivesspace'
+      # APPCONFIG_DB_URL: 'jdbc:mysql://host.docker.internal:3306/archivesspace_3_2_0?useUnicode=true&characterEncoding=UTF-8&user=as_3_2_0&password=as123&useSSL=false&allowPublicKeyRetrieval=true'
+      APPCONFIG_DB_URL: 'http://localhost:3306/archivesspace_3_2_0?useUnicode=true&characterEncoding=UTF-8&user=as_3_2_0&password=as123&useSSL=false&allowPublicKeyRetrieval=true'
+      APPCONFIG_SOLR_URL: 'http://localhost:8983/solr/#/archivesspace'
       APPCONFIG_SOLR_VERIFY_CHECKSUMS: 'false'
       APPCONFIG_FRONTEND_PROXY_URL: 'http://localhost:8080'
       APPCONFIG_PUBLIC_PROXY_URL: 'http://localhost:8081'
