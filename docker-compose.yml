@@ -19,6 +19,11 @@ services:
     volumes:
       - aspace_data:/archivesspace/data
       - aspace_logs:/archivesspace/logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: 5
 
   solr:
     container_name: solr
@@ -30,6 +35,12 @@ services:
     volumes:
       - solr:/opt/solr/server/solr/archivesspace/data
       - solr_logs:/opt/solr/server/logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+        
 volumes:
   aspace_data:
   aspace_logs:
